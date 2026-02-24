@@ -1,0 +1,22 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, Annotated, TypedDict
+
+from ...._types import FileTypes
+from ...._utils import PropertyInfo
+
+__all__ = ["ContextUploadParams"]
+
+
+class ContextUploadParams(TypedDict, total=False):
+    agent_id: Required[Annotated[str, PropertyInfo(alias="agentId")]]
+
+    context_key: Required[Annotated[str, PropertyInfo(alias="contextKey")]]
+
+    file: Required[FileTypes]
+    """The file to upload (CSV or JSON, max 10MB)"""
+
+    notes: str
+    """Optional notes or description for the dataset"""
