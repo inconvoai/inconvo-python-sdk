@@ -16,12 +16,9 @@ The REST API documentation can be found on [inconvo.com](https://inconvo.com/doc
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/inconvoai/inconvo-python-sdk.git
+# install from PyPI
+pip install inconvo
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install inconvo`
 
 ## Usage
 
@@ -81,8 +78,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from the production repo
-pip install 'inconvo[aiohttp] @ git+ssh://git@github.com/inconvoai/inconvo-python-sdk.git'
+# install from PyPI
+pip install inconvo[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
