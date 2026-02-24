@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Any, Dict, Iterator, AsyncIterator, cast
+from typing_extensions import Literal, overload, override
+
 import httpx
 
 from .feedback import (
@@ -22,12 +25,66 @@ from ....._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ....._streaming import Stream, AsyncStream
 from ....._base_client import make_request_options
 from .....types.agents.conversations import response_create_params
 from .....types.agents.conversations.response_create_response import ResponseCreateResponse
 from .....types.agents.conversations.response_retrieve_response import ResponseRetrieveResponse
 
 __all__ = ["ResponseResource", "AsyncResponseResource"]
+
+
+ResponseStreamEvent = Dict[str, Any]
+
+
+def _with_sse_accept_header(extra_headers: Headers | None) -> Headers:
+    return {**(extra_headers or {}), "Accept": "text/event-stream"}
+
+
+class ResponseCreateEventStream(Stream[ResponseStreamEvent]):
+    @override
+    def __stream__(self) -> Iterator[ResponseStreamEvent]:
+        cast_to = cast(Any, self._cast_to)
+        response = self.response
+        process_data = self._client._process_response_data
+        iterator = self._iter_events()
+
+        try:
+            for sse in iterator:
+                if sse.data == "[DONE]":
+                    continue
+
+                try:
+                    data = sse.json()
+                except Exception:
+                    continue
+
+                yield process_data(data=data, cast_to=cast_to, response=response)
+        finally:
+            response.close()
+
+
+class AsyncResponseCreateEventStream(AsyncStream[ResponseStreamEvent]):
+    @override
+    async def __stream__(self) -> AsyncIterator[ResponseStreamEvent]:
+        cast_to = cast(Any, self._cast_to)
+        response = self.response
+        process_data = self._client._process_response_data
+        iterator = self._iter_events()
+
+        try:
+            async for sse in iterator:
+                if sse.data == "[DONE]":
+                    continue
+
+                try:
+                    data = sse.json()
+                except Exception:
+                    continue
+
+                yield process_data(data=data, cast_to=cast_to, response=response)
+        finally:
+            await response.aclose()
 
 
 class ResponseResource(SyncAPIResource):
@@ -54,6 +111,48 @@ class ResponseResource(SyncAPIResource):
         """
         return ResponseResourceWithStreamingResponse(self)
 
+    @overload
+    def create(
+        self,
+        conversation_id: str,
+        *,
+        agent_id: str,
+        message: str,
+        stream: Literal[True],
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ResponseCreateEventStream: ...
+
+    @overload
+    def create(
+        self,
+        conversation_id: str,
+        *,
+        agent_id: str,
+        message: str,
+        stream: Literal[False] | Omit = omit,
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ResponseCreateResponse: ...
+
+    @overload
+    def create(
+        self,
+        conversation_id: str,
+        *,
+        agent_id: str,
+        message: str,
+        stream: bool | Omit = omit,
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ResponseCreateResponse | ResponseCreateEventStream: ...
+
     def create(
         self,
         conversation_id: str,
@@ -67,7 +166,7 @@ class ResponseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ResponseCreateResponse:
+    ) -> ResponseCreateResponse | ResponseCreateEventStream:
         """
         Create response (sync or streamed)
 
@@ -87,6 +186,7 @@ class ResponseResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
         if not conversation_id:
             raise ValueError(f"Expected a non-empty value for `conversation_id` but received {conversation_id!r}")
+        extra_headers = _with_sse_accept_header(extra_headers) if stream is True else extra_headers
         return self._post(
             f"/agents/{agent_id}/conversations/{conversation_id}/response",
             body=maybe_transform(
@@ -100,6 +200,8 @@ class ResponseResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ResponseCreateResponse,
+            stream=stream is True,
+            stream_cls=ResponseCreateEventStream if stream is True else None,
         )
 
     def retrieve(
@@ -166,6 +268,48 @@ class AsyncResponseResource(AsyncAPIResource):
         """
         return AsyncResponseResourceWithStreamingResponse(self)
 
+    @overload
+    async def create(
+        self,
+        conversation_id: str,
+        *,
+        agent_id: str,
+        message: str,
+        stream: Literal[True],
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncResponseCreateEventStream: ...
+
+    @overload
+    async def create(
+        self,
+        conversation_id: str,
+        *,
+        agent_id: str,
+        message: str,
+        stream: Literal[False] | Omit = omit,
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ResponseCreateResponse: ...
+
+    @overload
+    async def create(
+        self,
+        conversation_id: str,
+        *,
+        agent_id: str,
+        message: str,
+        stream: bool | Omit = omit,
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ResponseCreateResponse | AsyncResponseCreateEventStream: ...
+
     async def create(
         self,
         conversation_id: str,
@@ -179,7 +323,7 @@ class AsyncResponseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ResponseCreateResponse:
+    ) -> ResponseCreateResponse | AsyncResponseCreateEventStream:
         """
         Create response (sync or streamed)
 
@@ -199,6 +343,7 @@ class AsyncResponseResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
         if not conversation_id:
             raise ValueError(f"Expected a non-empty value for `conversation_id` but received {conversation_id!r}")
+        extra_headers = _with_sse_accept_header(extra_headers) if stream is True else extra_headers
         return await self._post(
             f"/agents/{agent_id}/conversations/{conversation_id}/response",
             body=await async_maybe_transform(
@@ -212,6 +357,8 @@ class AsyncResponseResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ResponseCreateResponse,
+            stream=stream is True,
+            stream_cls=AsyncResponseCreateEventStream if stream is True else None,
         )
 
     async def retrieve(
