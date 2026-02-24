@@ -5,10 +5,10 @@ from typing import Any
 import httpx
 import pytest
 
-from inconvo import Inconvo, AsyncInconvo
+from inconvo import AsyncInconvo, Inconvo
 from inconvo.resources.agents.conversations.response.response import (
-    ResponseCreateEventStream,
     AsyncResponseCreateEventStream,
+    ResponseCreateEventStream,
 )
 
 

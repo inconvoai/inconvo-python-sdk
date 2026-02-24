@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Any, AsyncIterator, Dict, Iterator, cast
+
 import httpx
-from typing import Any, Dict, Iterator, AsyncIterator, cast
 from typing_extensions import Literal, overload
 
 from .feedback import (
