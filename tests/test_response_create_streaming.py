@@ -11,7 +11,6 @@ from inconvo.resources.agents.conversations.response.response import (
     AsyncResponseCreateEventStream,
 )
 
-
 SSE_PAYLOAD = b"""data: {"type":"response.created","id":"resp_123"}
 
 data: not-json

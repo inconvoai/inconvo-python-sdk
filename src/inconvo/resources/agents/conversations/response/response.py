@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Any, Dict, Iterator, AsyncIterator, cast
-from typing_extensions import Literal, overload
+from typing_extensions import Literal, overload, override
 
 import httpx
 
@@ -19,13 +19,13 @@ from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
-from ....._streaming import Stream, AsyncStream
 from ....._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ....._streaming import Stream, AsyncStream
 from ....._base_client import make_request_options
 from .....types.agents.conversations import response_create_params
 from .....types.agents.conversations.response_create_response import ResponseCreateResponse
@@ -42,6 +42,7 @@ def _with_sse_accept_header(extra_headers: Headers | None) -> Headers:
 
 
 class ResponseCreateEventStream(Stream[ResponseStreamEvent]):
+    @override
     def __stream__(self) -> Iterator[ResponseStreamEvent]:
         cast_to = cast(Any, self._cast_to)
         response = self.response
@@ -64,6 +65,7 @@ class ResponseCreateEventStream(Stream[ResponseStreamEvent]):
 
 
 class AsyncResponseCreateEventStream(AsyncStream[ResponseStreamEvent]):
+    @override
     async def __stream__(self) -> AsyncIterator[ResponseStreamEvent]:
         cast_to = cast(Any, self._cast_to)
         response = self.response
