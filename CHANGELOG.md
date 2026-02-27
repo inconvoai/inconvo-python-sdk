@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.4 (2026-02-27)
+
+Full Changelog: [v0.0.3...v0.0.4](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.3...v0.0.4)
+
+### Chores
+
+* **ci:** bump uv version ([64af667](https://github.com/inconvoai/inconvo-python-sdk/commit/64af667ce0c338e611c8967d8ca293801841464e))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([b8c9f6e](https://github.com/inconvoai/inconvo-python-sdk/commit/b8c9f6e9ad78e08c401dfe5804aa4d681a632f98))
+
 ## 0.0.3 (2026-02-24)
 
 Full Changelog: [v0.0.2...v0.0.3](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.2...v0.0.3)
