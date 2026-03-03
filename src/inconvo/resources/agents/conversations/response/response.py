@@ -31,8 +31,13 @@ __all__ = ["ResponseResource", "AsyncResponseResource"]
 
 
 class ResponseResource(SyncAPIResource):
+    """
+    Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+    """
+
     @cached_property
     def feedback(self) -> FeedbackResource:
+        """Attach or edit quality feedback on individual responses"""
         return FeedbackResource(self._client)
 
     @cached_property
@@ -143,8 +148,13 @@ class ResponseResource(SyncAPIResource):
 
 
 class AsyncResponseResource(AsyncAPIResource):
+    """
+    Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+    """
+
     @cached_property
     def feedback(self) -> AsyncFeedbackResource:
+        """Attach or edit quality feedback on individual responses"""
         return AsyncFeedbackResource(self._client)
 
     @cached_property
@@ -267,6 +277,7 @@ class ResponseResourceWithRawResponse:
 
     @cached_property
     def feedback(self) -> FeedbackResourceWithRawResponse:
+        """Attach or edit quality feedback on individual responses"""
         return FeedbackResourceWithRawResponse(self._response.feedback)
 
 
@@ -283,6 +294,7 @@ class AsyncResponseResourceWithRawResponse:
 
     @cached_property
     def feedback(self) -> AsyncFeedbackResourceWithRawResponse:
+        """Attach or edit quality feedback on individual responses"""
         return AsyncFeedbackResourceWithRawResponse(self._response.feedback)
 
 
@@ -299,6 +311,7 @@ class ResponseResourceWithStreamingResponse:
 
     @cached_property
     def feedback(self) -> FeedbackResourceWithStreamingResponse:
+        """Attach or edit quality feedback on individual responses"""
         return FeedbackResourceWithStreamingResponse(self._response.feedback)
 
 
@@ -315,4 +328,5 @@ class AsyncResponseResourceWithStreamingResponse:
 
     @cached_property
     def feedback(self) -> AsyncFeedbackResourceWithStreamingResponse:
+        """Attach or edit quality feedback on individual responses"""
         return AsyncFeedbackResourceWithStreamingResponse(self._response.feedback)

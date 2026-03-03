@@ -26,6 +26,17 @@ __all__ = ["UserResource", "AsyncUserResource"]
 
 
 class UserResource(SyncAPIResource):
+    """Manage dataset files with scoped access.
+
+    Datasets can be scoped in two ways:
+    - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+    - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+    File storage paths:
+    - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+    - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+    """
+
     @cached_property
     def with_raw_response(self) -> UserResourceWithRawResponse:
         """
@@ -177,6 +188,17 @@ class UserResource(SyncAPIResource):
 
 
 class AsyncUserResource(AsyncAPIResource):
+    """Manage dataset files with scoped access.
+
+    Datasets can be scoped in two ways:
+    - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+    - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+    File storage paths:
+    - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+    - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncUserResourceWithRawResponse:
         """

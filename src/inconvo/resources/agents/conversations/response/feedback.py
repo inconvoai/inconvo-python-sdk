@@ -24,6 +24,8 @@ __all__ = ["FeedbackResource", "AsyncFeedbackResource"]
 
 
 class FeedbackResource(SyncAPIResource):
+    """Attach or edit quality feedback on individual responses"""
+
     @cached_property
     def with_raw_response(self) -> FeedbackResourceWithRawResponse:
         """
@@ -144,6 +146,8 @@ class FeedbackResource(SyncAPIResource):
 
 
 class AsyncFeedbackResource(AsyncAPIResource):
+    """Attach or edit quality feedback on individual responses"""
+
     @cached_property
     def with_raw_response(self) -> AsyncFeedbackResourceWithRawResponse:
         """
