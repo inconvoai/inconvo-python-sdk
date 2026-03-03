@@ -25,6 +25,8 @@ __all__ = ["TenantsResource", "AsyncTenantsResource"]
 
 
 class TenantsResource(SyncAPIResource):
+    """Manage MCP servers and their tenant mappings"""
+
     @cached_property
     def with_raw_response(self) -> TenantsResourceWithRawResponse:
         """
@@ -128,6 +130,8 @@ class TenantsResource(SyncAPIResource):
 
 
 class AsyncTenantsResource(AsyncAPIResource):
+    """Manage MCP servers and their tenant mappings"""
+
     @cached_property
     def with_raw_response(self) -> AsyncTenantsResourceWithRawResponse:
         """

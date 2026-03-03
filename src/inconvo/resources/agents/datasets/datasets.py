@@ -27,10 +27,30 @@ __all__ = ["DatasetsResource", "AsyncDatasetsResource"]
 class DatasetsResource(SyncAPIResource):
     @cached_property
     def user(self) -> UserResource:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return UserResource(self._client)
 
     @cached_property
     def context(self) -> ContextResource:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return ContextResource(self._client)
 
     @cached_property
@@ -56,10 +76,30 @@ class DatasetsResource(SyncAPIResource):
 class AsyncDatasetsResource(AsyncAPIResource):
     @cached_property
     def user(self) -> AsyncUserResource:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return AsyncUserResource(self._client)
 
     @cached_property
     def context(self) -> AsyncContextResource:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return AsyncContextResource(self._client)
 
     @cached_property
@@ -88,10 +128,30 @@ class DatasetsResourceWithRawResponse:
 
     @cached_property
     def user(self) -> UserResourceWithRawResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return UserResourceWithRawResponse(self._datasets.user)
 
     @cached_property
     def context(self) -> ContextResourceWithRawResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return ContextResourceWithRawResponse(self._datasets.context)
 
 
@@ -101,10 +161,30 @@ class AsyncDatasetsResourceWithRawResponse:
 
     @cached_property
     def user(self) -> AsyncUserResourceWithRawResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return AsyncUserResourceWithRawResponse(self._datasets.user)
 
     @cached_property
     def context(self) -> AsyncContextResourceWithRawResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return AsyncContextResourceWithRawResponse(self._datasets.context)
 
 
@@ -114,10 +194,30 @@ class DatasetsResourceWithStreamingResponse:
 
     @cached_property
     def user(self) -> UserResourceWithStreamingResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return UserResourceWithStreamingResponse(self._datasets.user)
 
     @cached_property
     def context(self) -> ContextResourceWithStreamingResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return ContextResourceWithStreamingResponse(self._datasets.context)
 
 
@@ -127,8 +227,28 @@ class AsyncDatasetsResourceWithStreamingResponse:
 
     @cached_property
     def user(self) -> AsyncUserResourceWithStreamingResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return AsyncUserResourceWithStreamingResponse(self._datasets.user)
 
     @cached_property
     def context(self) -> AsyncContextResourceWithStreamingResponse:
+        """Manage dataset files with scoped access.
+
+        Datasets can be scoped in two ways:
+        - **User-scoped** (`/datasets/user/{userIdentifier}`): Files accessible only to a specific user
+        - **Context-scoped** (`/datasets/context/{contextKey}/{contextValue}`): Files shared with all users matching a context value
+
+        File storage paths:
+        - User-scoped: `/{orgId}/{agentId}/userIdentifier/{userIdentifier}/filename.csv`
+        - Context-scoped: `/{orgId}/{agentId}/userContext/{contextKey}:{contextValue}/filename.csv`
+        """
         return AsyncContextResourceWithStreamingResponse(self._datasets.context)

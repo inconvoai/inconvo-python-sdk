@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.5 (2026-03-03)
+
+Full Changelog: [v0.0.4...v0.0.5](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.4...v0.0.5)
+
+### Chores
+
+* **internal:** codegen related update ([28664e0](https://github.com/inconvoai/inconvo-python-sdk/commit/28664e0045fc13c71ae96f735c13936671ed3c24))
+
 ## 0.0.4 (2026-02-27)
 
 Full Changelog: [v0.0.3...v0.0.4](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.3...v0.0.4)

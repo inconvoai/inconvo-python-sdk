@@ -19,6 +19,7 @@ __all__ = ["McpServersResource", "AsyncMcpServersResource"]
 class McpServersResource(SyncAPIResource):
     @cached_property
     def tenants(self) -> TenantsResource:
+        """Manage MCP servers and their tenant mappings"""
         return TenantsResource(self._client)
 
     @cached_property
@@ -44,6 +45,7 @@ class McpServersResource(SyncAPIResource):
 class AsyncMcpServersResource(AsyncAPIResource):
     @cached_property
     def tenants(self) -> AsyncTenantsResource:
+        """Manage MCP servers and their tenant mappings"""
         return AsyncTenantsResource(self._client)
 
     @cached_property
@@ -72,6 +74,7 @@ class McpServersResourceWithRawResponse:
 
     @cached_property
     def tenants(self) -> TenantsResourceWithRawResponse:
+        """Manage MCP servers and their tenant mappings"""
         return TenantsResourceWithRawResponse(self._mcp_servers.tenants)
 
 
@@ -81,6 +84,7 @@ class AsyncMcpServersResourceWithRawResponse:
 
     @cached_property
     def tenants(self) -> AsyncTenantsResourceWithRawResponse:
+        """Manage MCP servers and their tenant mappings"""
         return AsyncTenantsResourceWithRawResponse(self._mcp_servers.tenants)
 
 
@@ -90,6 +94,7 @@ class McpServersResourceWithStreamingResponse:
 
     @cached_property
     def tenants(self) -> TenantsResourceWithStreamingResponse:
+        """Manage MCP servers and their tenant mappings"""
         return TenantsResourceWithStreamingResponse(self._mcp_servers.tenants)
 
 
@@ -99,4 +104,5 @@ class AsyncMcpServersResourceWithStreamingResponse:
 
     @cached_property
     def tenants(self) -> AsyncTenantsResourceWithStreamingResponse:
+        """Manage MCP servers and their tenant mappings"""
         return AsyncTenantsResourceWithStreamingResponse(self._mcp_servers.tenants)
