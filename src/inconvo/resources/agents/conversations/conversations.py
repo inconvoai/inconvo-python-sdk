@@ -35,8 +35,13 @@ __all__ = ["ConversationsResource", "AsyncConversationsResource"]
 
 
 class ConversationsResource(SyncAPIResource):
+    """Create, list and retrieve conversation threads"""
+
     @cached_property
     def response(self) -> ResponseResource:
+        """
+        Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+        """
         return ResponseResource(self._client)
 
     @cached_property
@@ -201,8 +206,13 @@ class ConversationsResource(SyncAPIResource):
 
 
 class AsyncConversationsResource(AsyncAPIResource):
+    """Create, list and retrieve conversation threads"""
+
     @cached_property
     def response(self) -> AsyncResponseResource:
+        """
+        Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+        """
         return AsyncResponseResource(self._client)
 
     @cached_property
@@ -382,6 +392,9 @@ class ConversationsResourceWithRawResponse:
 
     @cached_property
     def response(self) -> ResponseResourceWithRawResponse:
+        """
+        Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+        """
         return ResponseResourceWithRawResponse(self._conversations.response)
 
 
@@ -401,6 +414,9 @@ class AsyncConversationsResourceWithRawResponse:
 
     @cached_property
     def response(self) -> AsyncResponseResourceWithRawResponse:
+        """
+        Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+        """
         return AsyncResponseResourceWithRawResponse(self._conversations.response)
 
 
@@ -420,6 +436,9 @@ class ConversationsResourceWithStreamingResponse:
 
     @cached_property
     def response(self) -> ResponseResourceWithStreamingResponse:
+        """
+        Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+        """
         return ResponseResourceWithStreamingResponse(self._conversations.response)
 
 
@@ -439,4 +458,7 @@ class AsyncConversationsResourceWithStreamingResponse:
 
     @cached_property
     def response(self) -> AsyncResponseResourceWithStreamingResponse:
+        """
+        Send a user message and receive Inconvo's structured reply (synchronous or SSE stream)
+        """
         return AsyncResponseResourceWithStreamingResponse(self._conversations.response)

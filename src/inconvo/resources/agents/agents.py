@@ -43,10 +43,12 @@ __all__ = ["AgentsResource", "AsyncAgentsResource"]
 class AgentsResource(SyncAPIResource):
     @cached_property
     def data_summary(self) -> DataSummaryResource:
+        """Retrieve information about agents and their data access"""
         return DataSummaryResource(self._client)
 
     @cached_property
     def conversations(self) -> ConversationsResource:
+        """Create, list and retrieve conversation threads"""
         return ConversationsResource(self._client)
 
     @cached_property
@@ -80,10 +82,12 @@ class AgentsResource(SyncAPIResource):
 class AsyncAgentsResource(AsyncAPIResource):
     @cached_property
     def data_summary(self) -> AsyncDataSummaryResource:
+        """Retrieve information about agents and their data access"""
         return AsyncDataSummaryResource(self._client)
 
     @cached_property
     def conversations(self) -> AsyncConversationsResource:
+        """Create, list and retrieve conversation threads"""
         return AsyncConversationsResource(self._client)
 
     @cached_property
@@ -120,10 +124,12 @@ class AgentsResourceWithRawResponse:
 
     @cached_property
     def data_summary(self) -> DataSummaryResourceWithRawResponse:
+        """Retrieve information about agents and their data access"""
         return DataSummaryResourceWithRawResponse(self._agents.data_summary)
 
     @cached_property
     def conversations(self) -> ConversationsResourceWithRawResponse:
+        """Create, list and retrieve conversation threads"""
         return ConversationsResourceWithRawResponse(self._agents.conversations)
 
     @cached_property
@@ -141,10 +147,12 @@ class AsyncAgentsResourceWithRawResponse:
 
     @cached_property
     def data_summary(self) -> AsyncDataSummaryResourceWithRawResponse:
+        """Retrieve information about agents and their data access"""
         return AsyncDataSummaryResourceWithRawResponse(self._agents.data_summary)
 
     @cached_property
     def conversations(self) -> AsyncConversationsResourceWithRawResponse:
+        """Create, list and retrieve conversation threads"""
         return AsyncConversationsResourceWithRawResponse(self._agents.conversations)
 
     @cached_property
@@ -162,10 +170,12 @@ class AgentsResourceWithStreamingResponse:
 
     @cached_property
     def data_summary(self) -> DataSummaryResourceWithStreamingResponse:
+        """Retrieve information about agents and their data access"""
         return DataSummaryResourceWithStreamingResponse(self._agents.data_summary)
 
     @cached_property
     def conversations(self) -> ConversationsResourceWithStreamingResponse:
+        """Create, list and retrieve conversation threads"""
         return ConversationsResourceWithStreamingResponse(self._agents.conversations)
 
     @cached_property
@@ -183,10 +193,12 @@ class AsyncAgentsResourceWithStreamingResponse:
 
     @cached_property
     def data_summary(self) -> AsyncDataSummaryResourceWithStreamingResponse:
+        """Retrieve information about agents and their data access"""
         return AsyncDataSummaryResourceWithStreamingResponse(self._agents.data_summary)
 
     @cached_property
     def conversations(self) -> AsyncConversationsResourceWithStreamingResponse:
+        """Create, list and retrieve conversation threads"""
         return AsyncConversationsResourceWithStreamingResponse(self._agents.conversations)
 
     @cached_property

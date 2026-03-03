@@ -20,6 +20,8 @@ __all__ = ["DataSummaryResource", "AsyncDataSummaryResource"]
 
 
 class DataSummaryResource(SyncAPIResource):
+    """Retrieve information about agents and their data access"""
+
     @cached_property
     def with_raw_response(self) -> DataSummaryResourceWithRawResponse:
         """
@@ -74,6 +76,8 @@ class DataSummaryResource(SyncAPIResource):
 
 
 class AsyncDataSummaryResource(AsyncAPIResource):
+    """Retrieve information about agents and their data access"""
+
     @cached_property
     def with_raw_response(self) -> AsyncDataSummaryResourceWithRawResponse:
         """
