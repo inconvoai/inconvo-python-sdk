@@ -1,6 +1,6 @@
 [project]
 name = "inconvo"
-version = "0.0.5"
+version = "0.0.6"
 description = "The official Python library for the inconvo API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -42,6 +42,7 @@ Repository = "https://github.com/inconvoai/inconvo-python-sdk"
 
 [project.optional-dependencies]
 aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.9"]
+claude = ["claude-agent-sdk>=0.0.20 ; python_version >= '3.10'"]
 
 [tool.uv]
 managed = true
@@ -50,6 +51,10 @@ conflicts = [
     [
       { group = "pydantic-v1" },
       { group = "pydantic-v2" },
+    ],
+    [
+      { group = "pydantic-v1" },
+      { extra = "claude" },
     ],
 ]
 
@@ -136,6 +141,7 @@ exclude = [
     ".venv",
     ".nox",
     ".git",
+    "src/inconvo/claude_sdk",
 ]
 
 reportImplicitOverride = true
@@ -154,7 +160,7 @@ show_error_codes = true
 #
 # We also exclude our `tests` as mypy doesn't always infer
 # types correctly and Pyright will still catch any type errors.
-exclude = ['src/inconvo/_files.py', '_dev/.*.py', 'tests/.*']
+exclude = ['src/inconvo/_files.py', 'src/inconvo/claude_sdk/.*', '_dev/.*.py', 'tests/.*']
 
 strict_equality = true
 implicit_reexport = true
