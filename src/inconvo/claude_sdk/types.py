@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 from typing import Any, Callable, TypedDict
+from dataclasses import field, dataclass
 
 from .._client import AsyncInconvo
 
