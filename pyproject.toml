@@ -42,6 +42,7 @@ Repository = "https://github.com/inconvoai/inconvo-python-sdk"
 
 [project.optional-dependencies]
 aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.9"]
+claude = ["claude-agent-sdk>=0.0.20"]
 
 [tool.uv]
 managed = true
