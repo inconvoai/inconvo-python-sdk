@@ -141,6 +141,7 @@ exclude = [
     ".venv",
     ".nox",
     ".git",
+    "src/inconvo/claude_sdk",
 ]
 
 reportImplicitOverride = true
