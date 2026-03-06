@@ -52,6 +52,10 @@ conflicts = [
       { group = "pydantic-v1" },
       { group = "pydantic-v2" },
     ],
+    [
+      { group = "pydantic-v1" },
+      { extra = "claude" },
+    ],
 ]
 
 [dependency-groups]
