@@ -13,7 +13,7 @@ from .feedback import (
     AsyncFeedbackResourceWithStreamingResponse,
 )
 from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -93,7 +93,11 @@ class ResponseResource(SyncAPIResource):
         if not conversation_id:
             raise ValueError(f"Expected a non-empty value for `conversation_id` but received {conversation_id!r}")
         return self._post(
-            f"/agents/{agent_id}/conversations/{conversation_id}/response",
+            path_template(
+                "/agents/{agent_id}/conversations/{conversation_id}/response",
+                agent_id=agent_id,
+                conversation_id=conversation_id,
+            ),
             body=maybe_transform(
                 {
                     "message": message,
@@ -139,7 +143,12 @@ class ResponseResource(SyncAPIResource):
         if not response_id:
             raise ValueError(f"Expected a non-empty value for `response_id` but received {response_id!r}")
         return self._get(
-            f"/agents/{agent_id}/conversations/{conversation_id}/response/{response_id}",
+            path_template(
+                "/agents/{agent_id}/conversations/{conversation_id}/response/{response_id}",
+                agent_id=agent_id,
+                conversation_id=conversation_id,
+                response_id=response_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -210,7 +219,11 @@ class AsyncResponseResource(AsyncAPIResource):
         if not conversation_id:
             raise ValueError(f"Expected a non-empty value for `conversation_id` but received {conversation_id!r}")
         return await self._post(
-            f"/agents/{agent_id}/conversations/{conversation_id}/response",
+            path_template(
+                "/agents/{agent_id}/conversations/{conversation_id}/response",
+                agent_id=agent_id,
+                conversation_id=conversation_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "message": message,
@@ -256,7 +269,12 @@ class AsyncResponseResource(AsyncAPIResource):
         if not response_id:
             raise ValueError(f"Expected a non-empty value for `response_id` but received {response_id!r}")
         return await self._get(
-            f"/agents/{agent_id}/conversations/{conversation_id}/response/{response_id}",
+            path_template(
+                "/agents/{agent_id}/conversations/{conversation_id}/response/{response_id}",
+                agent_id=agent_id,
+                conversation_id=conversation_id,
+                response_id=response_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
