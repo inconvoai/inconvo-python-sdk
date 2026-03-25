@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.0.7 (2026-03-25)
+
+Full Changelog: [v0.0.6...v0.0.7](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.6...v0.0.7)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([cac4c9c](https://github.com/inconvoai/inconvo-python-sdk/commit/cac4c9c1461adb6a924c4557a1ba587a6c4fc7da))
+* **pydantic:** do not pass `by_alias` unless set ([da0f4a2](https://github.com/inconvoai/inconvo-python-sdk/commit/da0f4a2e89850106edd3051370883f8acdca1b13))
+* sanitize endpoint path params ([5abb575](https://github.com/inconvoai/inconvo-python-sdk/commit/5abb5758079e65ec7c5f0fa52f40021affa83f6f))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([c63d862](https://github.com/inconvoai/inconvo-python-sdk/commit/c63d862be1bf52d0da8f9fa969d2a1cdec7dadc0))
+* **ci:** skip uploading artifacts on stainless-internal branches ([e13437b](https://github.com/inconvoai/inconvo-python-sdk/commit/e13437b87bd146af1aef92e94b85bd6cfae31053))
+* **internal:** tweak CI branches ([a3445dc](https://github.com/inconvoai/inconvo-python-sdk/commit/a3445dcb7e9233212a9fe87e71ed4ea39481f5b6))
+* **internal:** update gitignore ([cfaa395](https://github.com/inconvoai/inconvo-python-sdk/commit/cfaa3954acc85121fe386e7f98091a7bd0bf2888))
+* update placeholder string ([dba4b66](https://github.com/inconvoai/inconvo-python-sdk/commit/dba4b6631544bd8f7495290f468f84c20ed73b2a))
+
 ## 0.0.6 (2026-03-06)
 
 Full Changelog: [v0.0.5...v0.0.6](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.5...v0.0.6)
