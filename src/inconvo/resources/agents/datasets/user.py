@@ -7,7 +7,7 @@ from typing import Mapping, cast
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, FileTypes, omit, not_given
-from ...._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ...._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -85,7 +85,9 @@ class UserResource(SyncAPIResource):
         if not user_identifier:
             raise ValueError(f"Expected a non-empty value for `user_identifier` but received {user_identifier!r}")
         return self._get(
-            f"/agents/{agent_id}/datasets/user/{user_identifier}",
+            path_template(
+                "/agents/{agent_id}/datasets/user/{user_identifier}", agent_id=agent_id, user_identifier=user_identifier
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -124,7 +126,12 @@ class UserResource(SyncAPIResource):
         if not filename:
             raise ValueError(f"Expected a non-empty value for `filename` but received {filename!r}")
         return self._delete(
-            f"/agents/{agent_id}/datasets/user/{user_identifier}/{filename}",
+            path_template(
+                "/agents/{agent_id}/datasets/user/{user_identifier}/{filename}",
+                agent_id=agent_id,
+                user_identifier=user_identifier,
+                filename=filename,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -177,7 +184,9 @@ class UserResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
-            f"/agents/{agent_id}/datasets/user/{user_identifier}",
+            path_template(
+                "/agents/{agent_id}/datasets/user/{user_identifier}", agent_id=agent_id, user_identifier=user_identifier
+            ),
             body=maybe_transform(body, user_upload_params.UserUploadParams),
             files=files,
             options=make_request_options(
@@ -247,7 +256,9 @@ class AsyncUserResource(AsyncAPIResource):
         if not user_identifier:
             raise ValueError(f"Expected a non-empty value for `user_identifier` but received {user_identifier!r}")
         return await self._get(
-            f"/agents/{agent_id}/datasets/user/{user_identifier}",
+            path_template(
+                "/agents/{agent_id}/datasets/user/{user_identifier}", agent_id=agent_id, user_identifier=user_identifier
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -286,7 +297,12 @@ class AsyncUserResource(AsyncAPIResource):
         if not filename:
             raise ValueError(f"Expected a non-empty value for `filename` but received {filename!r}")
         return await self._delete(
-            f"/agents/{agent_id}/datasets/user/{user_identifier}/{filename}",
+            path_template(
+                "/agents/{agent_id}/datasets/user/{user_identifier}/{filename}",
+                agent_id=agent_id,
+                user_identifier=user_identifier,
+                filename=filename,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -339,7 +355,9 @@ class AsyncUserResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
-            f"/agents/{agent_id}/datasets/user/{user_identifier}",
+            path_template(
+                "/agents/{agent_id}/datasets/user/{user_identifier}", agent_id=agent_id, user_identifier=user_identifier
+            ),
             body=await async_maybe_transform(body, user_upload_params.UserUploadParams),
             files=files,
             options=make_request_options(

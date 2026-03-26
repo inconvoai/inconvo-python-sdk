@@ -7,7 +7,7 @@ from typing import Dict, Union
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -99,7 +99,7 @@ class ConversationsResource(SyncAPIResource):
         if not agent_id:
             raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
         return self._post(
-            f"/agents/{agent_id}/conversations",
+            path_template("/agents/{agent_id}/conversations", agent_id=agent_id),
             body=maybe_transform(
                 {
                     "user_identifier": user_identifier,
@@ -142,7 +142,9 @@ class ConversationsResource(SyncAPIResource):
         if not conversation_id:
             raise ValueError(f"Expected a non-empty value for `conversation_id` but received {conversation_id!r}")
         return self._get(
-            f"/agents/{agent_id}/conversations/{conversation_id}",
+            path_template(
+                "/agents/{agent_id}/conversations/{conversation_id}", agent_id=agent_id, conversation_id=conversation_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -184,7 +186,7 @@ class ConversationsResource(SyncAPIResource):
         if not agent_id:
             raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
         return self._get_api_list(
-            f"/agents/{agent_id}/conversations",
+            path_template("/agents/{agent_id}/conversations", agent_id=agent_id),
             page=SyncConversationsCursor[ConversationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -270,7 +272,7 @@ class AsyncConversationsResource(AsyncAPIResource):
         if not agent_id:
             raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
         return await self._post(
-            f"/agents/{agent_id}/conversations",
+            path_template("/agents/{agent_id}/conversations", agent_id=agent_id),
             body=await async_maybe_transform(
                 {
                     "user_identifier": user_identifier,
@@ -313,7 +315,9 @@ class AsyncConversationsResource(AsyncAPIResource):
         if not conversation_id:
             raise ValueError(f"Expected a non-empty value for `conversation_id` but received {conversation_id!r}")
         return await self._get(
-            f"/agents/{agent_id}/conversations/{conversation_id}",
+            path_template(
+                "/agents/{agent_id}/conversations/{conversation_id}", agent_id=agent_id, conversation_id=conversation_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -355,7 +359,7 @@ class AsyncConversationsResource(AsyncAPIResource):
         if not agent_id:
             raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
         return self._get_api_list(
-            f"/agents/{agent_id}/conversations",
+            path_template("/agents/{agent_id}/conversations", agent_id=agent_id),
             page=AsyncConversationsCursor[ConversationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

@@ -139,7 +139,7 @@ class TestUser:
         user = client.agents.datasets.user.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(UserUploadResponse, user, path=["response"])
 
@@ -149,7 +149,7 @@ class TestUser:
         user = client.agents.datasets.user.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
             notes="notes",
         )
         assert_matches_type(UserUploadResponse, user, path=["response"])
@@ -160,7 +160,7 @@ class TestUser:
         response = client.agents.datasets.user.with_raw_response.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -174,7 +174,7 @@ class TestUser:
         with client.agents.datasets.user.with_streaming_response.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -191,14 +191,14 @@ class TestUser:
             client.agents.datasets.user.with_raw_response.upload(
                 user_identifier="user_123",
                 agent_id="",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_identifier` but received ''"):
             client.agents.datasets.user.with_raw_response.upload(
                 user_identifier="",
                 agent_id="agentId",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
 
@@ -329,7 +329,7 @@ class TestAsyncUser:
         user = await async_client.agents.datasets.user.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(UserUploadResponse, user, path=["response"])
 
@@ -339,7 +339,7 @@ class TestAsyncUser:
         user = await async_client.agents.datasets.user.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
             notes="notes",
         )
         assert_matches_type(UserUploadResponse, user, path=["response"])
@@ -350,7 +350,7 @@ class TestAsyncUser:
         response = await async_client.agents.datasets.user.with_raw_response.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -364,7 +364,7 @@ class TestAsyncUser:
         async with async_client.agents.datasets.user.with_streaming_response.upload(
             user_identifier="user_123",
             agent_id="agentId",
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -381,12 +381,12 @@ class TestAsyncUser:
             await async_client.agents.datasets.user.with_raw_response.upload(
                 user_identifier="user_123",
                 agent_id="",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_identifier` but received ''"):
             await async_client.agents.datasets.user.with_raw_response.upload(
                 user_identifier="",
                 agent_id="agentId",
-                file=b"raw file contents",
+                file=b"Example data",
             )

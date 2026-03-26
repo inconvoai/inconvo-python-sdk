@@ -7,7 +7,7 @@ from typing import Mapping, cast
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, FileTypes, omit, not_given
-from ...._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ...._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -90,7 +90,12 @@ class ContextResource(SyncAPIResource):
         if not context_value:
             raise ValueError(f"Expected a non-empty value for `context_value` but received {context_value!r}")
         return self._get(
-            f"/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+            path_template(
+                "/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+                agent_id=agent_id,
+                context_key=context_key,
+                context_value=context_value,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -134,7 +139,13 @@ class ContextResource(SyncAPIResource):
         if not filename:
             raise ValueError(f"Expected a non-empty value for `filename` but received {filename!r}")
         return self._delete(
-            f"/agents/{agent_id}/datasets/context/{context_key}/{context_value}/{filename}",
+            path_template(
+                "/agents/{agent_id}/datasets/context/{context_key}/{context_value}/{filename}",
+                agent_id=agent_id,
+                context_key=context_key,
+                context_value=context_value,
+                filename=filename,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -193,7 +204,12 @@ class ContextResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
-            f"/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+            path_template(
+                "/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+                agent_id=agent_id,
+                context_key=context_key,
+                context_value=context_value,
+            ),
             body=maybe_transform(body, context_upload_params.ContextUploadParams),
             files=files,
             options=make_request_options(
@@ -268,7 +284,12 @@ class AsyncContextResource(AsyncAPIResource):
         if not context_value:
             raise ValueError(f"Expected a non-empty value for `context_value` but received {context_value!r}")
         return await self._get(
-            f"/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+            path_template(
+                "/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+                agent_id=agent_id,
+                context_key=context_key,
+                context_value=context_value,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -312,7 +333,13 @@ class AsyncContextResource(AsyncAPIResource):
         if not filename:
             raise ValueError(f"Expected a non-empty value for `filename` but received {filename!r}")
         return await self._delete(
-            f"/agents/{agent_id}/datasets/context/{context_key}/{context_value}/{filename}",
+            path_template(
+                "/agents/{agent_id}/datasets/context/{context_key}/{context_value}/{filename}",
+                agent_id=agent_id,
+                context_key=context_key,
+                context_value=context_value,
+                filename=filename,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -371,7 +398,12 @@ class AsyncContextResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
-            f"/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+            path_template(
+                "/agents/{agent_id}/datasets/context/{context_key}/{context_value}",
+                agent_id=agent_id,
+                context_key=context_key,
+                context_value=context_value,
+            ),
             body=await async_maybe_transform(body, context_upload_params.ContextUploadParams),
             files=files,
             options=make_request_options(

@@ -170,7 +170,7 @@ class TestContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(ContextUploadResponse, context, path=["response"])
 
@@ -181,7 +181,7 @@ class TestContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
             notes="notes",
         )
         assert_matches_type(ContextUploadResponse, context, path=["response"])
@@ -193,7 +193,7 @@ class TestContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -208,7 +208,7 @@ class TestContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -226,7 +226,7 @@ class TestContext:
                 context_value="org_456",
                 agent_id="",
                 context_key="orgId",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `context_key` but received ''"):
@@ -234,7 +234,7 @@ class TestContext:
                 context_value="org_456",
                 agent_id="agentId",
                 context_key="",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `context_value` but received ''"):
@@ -242,7 +242,7 @@ class TestContext:
                 context_value="",
                 agent_id="agentId",
                 context_key="orgId",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
 
@@ -400,7 +400,7 @@ class TestAsyncContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(ContextUploadResponse, context, path=["response"])
 
@@ -411,7 +411,7 @@ class TestAsyncContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
             notes="notes",
         )
         assert_matches_type(ContextUploadResponse, context, path=["response"])
@@ -423,7 +423,7 @@ class TestAsyncContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -438,7 +438,7 @@ class TestAsyncContext:
             context_value="org_456",
             agent_id="agentId",
             context_key="orgId",
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -456,7 +456,7 @@ class TestAsyncContext:
                 context_value="org_456",
                 agent_id="",
                 context_key="orgId",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `context_key` but received ''"):
@@ -464,7 +464,7 @@ class TestAsyncContext:
                 context_value="org_456",
                 agent_id="agentId",
                 context_key="",
-                file=b"raw file contents",
+                file=b"Example data",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `context_value` but received ''"):
@@ -472,5 +472,5 @@ class TestAsyncContext:
                 context_value="",
                 agent_id="agentId",
                 context_key="orgId",
-                file=b"raw file contents",
+                file=b"Example data",
             )
