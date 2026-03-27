@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0 (2026-03-27)
+
+Full Changelog: [v0.0.7...v0.1.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.7...v0.1.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([47f8f94](https://github.com/inconvoai/inconvo-python-sdk/commit/47f8f94e2798939fe55ad02b16eb20eeff0bc33c))
+
 ## 0.0.7 (2026-03-25)
 
 Full Changelog: [v0.0.6...v0.0.7](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.6...v0.0.7)
