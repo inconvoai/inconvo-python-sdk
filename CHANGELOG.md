@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2026-04-11)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([475f176](https://github.com/inconvoai/inconvo-python-sdk/commit/475f176f2789deba45efa3dc86829fa1bba11f96))
+* ensure file data are only sent as 1 parameter ([506dec0](https://github.com/inconvoai/inconvo-python-sdk/commit/506dec0846ee2b540ecf77c03e710a5913f4b521))
+
 ## 0.1.0 (2026-03-27)
 
 Full Changelog: [v0.0.7...v0.1.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.0.7...v0.1.0)
