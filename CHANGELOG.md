@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 (2026-04-18)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.1...v0.1.2)
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([c22e348](https://github.com/inconvoai/inconvo-python-sdk/commit/c22e348e2375829dc5f84cb54186025e67e759fd))
+
 ## 0.1.1 (2026-04-11)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.0...v0.1.1)
