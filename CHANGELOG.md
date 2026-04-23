@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 (2026-04-23)
+
+Full Changelog: [v0.1.2...v0.1.3](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.2...v0.1.3)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([d1c1637](https://github.com/inconvoai/inconvo-python-sdk/commit/d1c1637909155637970c20a3ee596a0516de548b))
+
 ## 0.1.2 (2026-04-18)
 
 Full Changelog: [v0.1.1...v0.1.2](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.1...v0.1.2)
