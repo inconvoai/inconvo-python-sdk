@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 (2026-04-28)
+
+Full Changelog: [v0.1.3...v0.2.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.3...v0.2.0)
+
+### Features
+
+* support setting headers via env ([868edb9](https://github.com/inconvoai/inconvo-python-sdk/commit/868edb95e06b431730d12a15f18df010083272fa))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([ef80fc0](https://github.com/inconvoai/inconvo-python-sdk/commit/ef80fc05e8543076146e6f4e22e890a4799b2098))
+
 ## 0.1.3 (2026-04-23)
 
 Full Changelog: [v0.1.2...v0.1.3](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.2...v0.1.3)
