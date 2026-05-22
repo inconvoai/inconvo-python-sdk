@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.0 (2026-05-22)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([447d6cd](https://github.com/inconvoai/inconvo-python-sdk/commit/447d6cd80c8e80078723864b03552d23e18e49aa))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([7c601d9](https://github.com/inconvoai/inconvo-python-sdk/commit/7c601d904d953c13e0590ade1fcea3c9b73a356e))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([1885c51](https://github.com/inconvoai/inconvo-python-sdk/commit/1885c5188dc591f249c6cffab1ef3439bc795262))
+
 ## 0.2.0 (2026-04-28)
 
 Full Changelog: [v0.1.3...v0.2.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.1.3...v0.2.0)
