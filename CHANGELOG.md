@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 (2026-07-18)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([a70d009](https://github.com/inconvoai/inconvo-python-sdk/commit/a70d009d464c65e045d0803629f8ef133f13b5d9))
+
+
+### Bug Fixes
+
+* **internal:** resolve build failures ([994d3b7](https://github.com/inconvoai/inconvo-python-sdk/commit/994d3b7b19ed9a896225b0eae05d2c36db73fb0e))
+
 ## 0.3.0 (2026-05-22)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/inconvoai/inconvo-python-sdk/compare/v0.2.0...v0.3.0)
